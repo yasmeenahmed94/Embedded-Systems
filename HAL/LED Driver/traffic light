@@ -1,0 +1,21 @@
+#include"stdtypes.h"
+#include"dio.h"
+#include"led.h"
+#include"avr/delay.h"
+
+LED_vidInit();
+	while(1){
+      LED_vidTurnONLed(0);
+      LED_vidTurnOffLed(2);
+      LED_vidTurnOffLed(2);
+      _delay_ms(2000);
+      LED_vidTurnONLed(1);
+      LED_vidTurnOffLed(0);
+      LED_vidTurnOffLed(2);
+      _delay_ms(2000);
+      LED_vidTurnONLed(2);
+      LED_vidTurnOffLed(0);
+      LED_vidTurnOffLed(1);
+      _delay_ms(2000);
+
+	}
