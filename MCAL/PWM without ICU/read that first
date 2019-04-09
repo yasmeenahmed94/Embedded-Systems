@@ -1,0 +1,19 @@
+This method doesn’t require a dedicated
+peripheral for the ICU, it uses a normal timer
+and a external interrupt peripheral with the
+following algorithm:
+
+• Apply the PWM signal to be measure on the EXTI pin while
+configuring the EXTI mode to be rising edge detection.
+• At the first rising edge, an interrupt would be generated,
+inside the ISR do the following:
+ Enable the timer to start count.
+ Configure the EXTI to detect falling edge
+• With the falling edge, another interrupt would be generated,
+inside the ISR do the following:
+ Read the value of the timer and save it in a variable called Ton
+ Reset the timer to count from 0 again
+ Configure the EXTI to detect rising edge
+• With the next rising edge, and interrupt would be generated, inside the ISR do the
+following:
+ Read the value of the timer and save it in a variable called Toff
